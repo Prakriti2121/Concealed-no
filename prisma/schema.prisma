@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Banner {
+  id          Int     @id @default(autoincrement())
+  title       String?
+  link        String?
+  image       String?
+  description String?
+
+  @@map("banner")
+}
+
+
+model Page {
+  id            Int      @id @default(autoincrement())
+  title         String
+  content       String   @db.Text
+  slug          String   @unique(map: "Page_slug_key")
+  featuredImage String?
+  author        String?
+  seoTitle      String?
+  metaDesc      String?
+  canonicalUrl  String?
+  published     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("page")
+}
+
+model Product {
+  id                  Int      @id @default(autoincrement())
+  slug                String   @unique @default(cuid())
+  title               String   @default("Untitled Product")
+  isNew               Boolean
+  availableOnlyOnline Boolean
+  organic             Boolean
+  featured            Boolean
+  productCode         String
+  vintage             String
+  price               Float
+  largeImage          String
+  buyLink             String
+  sortiment           String
+  tagLine             String
+  producerDescription String?  @db.LongText
+  producerUrl         String
+  region              String
+  taste               Json
+  awards              String
+  additionalInfo      String
+  vegetables          Boolean
+  roastedVegetables   Boolean
+  softCheese          Boolean
+  hardCheese          Boolean
+  starches            Boolean
+  fish                Boolean
+  richFish            Boolean
+  whiteMeatPoultry    Boolean
+  lambMeat            Boolean
+  porkMeat            Boolean
+  redMeatBeef         Boolean
+  gameMeat            Boolean
+  curedMeat           Boolean
+  sweets              Boolean
+  bottleVolume        Float
+  alcohol             Float
+  composition         String
+  closure             String
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("product")
+}
+
+
+model TeamMember {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?  @db.Text
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("teammember")
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  username String
+  email    String @unique(map: "User_email_key")
+  password String
+  role     String
+
+  @@map("user")
+}

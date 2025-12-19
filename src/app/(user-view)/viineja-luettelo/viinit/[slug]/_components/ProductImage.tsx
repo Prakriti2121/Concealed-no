@@ -83,7 +83,7 @@ export default function ProductImageZoom({ src, alt }: ProductImageZoomProps) {
             className="w-full h-full"
             style={{
               backgroundImage: `url(${src})`,
-              backgroundSize: "150%",
+              backgroundSize: "110%",
               backgroundPosition: `${mousePosition.x}% ${mousePosition.y}%`,
               backgroundRepeat: "no-repeat",
               imageRendering: "crisp-edges",

@@ -57,8 +57,8 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: organization }}
       />
       <h1 className="sr-only">Concealed Wines Finland</h1>
-      <BannerSection />
       <Jumbotron />
+      <BannerSection />
       <FeaturedProduct />
       <div className="mt-24 sm:mt-32 md:mt-40">
         <div>

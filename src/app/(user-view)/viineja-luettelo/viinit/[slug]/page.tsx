@@ -39,7 +39,7 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Product Not Found",
+      title: "Produkt ikke funnet",
       description: "",
     };
   }

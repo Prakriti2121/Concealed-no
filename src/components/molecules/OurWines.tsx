@@ -45,9 +45,9 @@ const OurWines: React.FC<OurWinesProps> = ({ data }) => {
           className={`${isDesktop ? "order-1" : "order-2"} space-y-6`}
         >
           <h2 className="text-4xl md:text-5xl font-bold relative text-[#1D2939]">
-            {data.title || "Our Wines"}
+            {data.title || "Våre viner"}
             <span className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-primary/5 text-7xl md:text-8xl font-bold">
-              {data.title || "Wines"}
+              {data.title || "Viner"}
             </span>
           </h2>
 
@@ -79,7 +79,7 @@ const OurWines: React.FC<OurWinesProps> = ({ data }) => {
           <div className="relative overflow-hidden rounded-[40px] shadow-lg">
             <Image
               src={data.featuredImage || "/images/barrels.jpg"}
-              alt="Our Wines"
+              alt="Våre viner"
               width={500}
               height={500}
               className="w-full aspect-square object-cover transform hover:scale-105 transition-transform duration-700"

@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(baseUrl),
     title: data.seoTitle || data.title,
     description:
-      data.metaDesc || "Welcome to Concealed Wines Finland homepage!",
+      data.metaDesc || "Velkommen til Concealed Wines Finland hjemmeside!",
     robots: getRobotsString(),
     alternates: {
       canonical: canonicalUrl,

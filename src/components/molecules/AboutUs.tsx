@@ -48,7 +48,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ data }) => {
           <div className="relative overflow-hidden rounded-[40px] shadow-lg">
             <Image
               src={data.featuredImage || "/images/placeholder.jpg"}
-              alt="About Us"
+              alt="Om oss"
               width={500}
               height={500}
               className="w-full aspect-square object-cover transform hover:scale-105 transition-transform duration-700"
@@ -63,9 +63,9 @@ const AboutUs: React.FC<AboutUsProps> = ({ data }) => {
           className={`${isDesktop ? "order-2" : "order-2"} space-y-6`}
         >
           <h2 className="text-4xl md:text-5xl font-bold relative text-[#1D2939]">
-            {data.title || "About Us"}
+            {data.title || "Om oss"}
             <span className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-primary/5 text-7xl md:text-8xl font-bold">
-              {data.title || "ABOUT"}
+              {data.title || "OM"}
             </span>
           </h2>
 

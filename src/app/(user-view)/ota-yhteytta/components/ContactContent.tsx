@@ -89,11 +89,11 @@ export function ContactContent() {
       if (!response.ok) {
         throw new Error("Failed to send email");
       }
-      alert("Email sent successfully!");
+      alert("E-post sendt!");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (error) {
       console.error("Error sending email:", error);
-      alert("Error sending email");
+      alert("Feil ved sending av e-post");
     } finally {
       setIsSubmitting(false);
     }
@@ -189,7 +189,7 @@ export function ContactContent() {
   }
 
   if (!pageData) {
-    return <div>Error loading page data</div>;
+    return <div>Feil ved lasting av sidedata</div>;
   }
 
   const currentUrl = typeof window !== "undefined" ? window.location.href : "";
@@ -227,7 +227,7 @@ export function ContactContent() {
                         className="gap-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
                       >
                         <Share2 className="h-4 w-4" />
-                        Share
+                        Del
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-2">
@@ -242,7 +242,7 @@ export function ContactContent() {
                             className="h-9 w-9"
                           >
                             <Facebook className="h-4 w-4" />
-                            <span className="sr-only">Share on Facebook</span>
+                            <span className="sr-only">Del på Facebook</span>
                           </Button>
                         </FacebookShareButton>
 
@@ -256,7 +256,7 @@ export function ContactContent() {
                             className="h-9 w-9"
                           >
                             <Twitter className="h-4 w-4" />
-                            <span className="sr-only">Share on Twitter</span>
+                            <span className="sr-only">Del på Twitter</span>
                           </Button>
                         </TwitterShareButton>
 
@@ -270,7 +270,7 @@ export function ContactContent() {
                             className="h-9 w-9"
                           >
                             <Linkedin className="h-4 w-4" />
-                            <span className="sr-only">Share on LinkedIn</span>
+                            <span className="sr-only">Del på LinkedIn</span>
                           </Button>
                         </LinkedinShareButton>
                       </div>
@@ -283,49 +283,49 @@ export function ContactContent() {
             <Card>
               <CardContent className="p-6">
                 <h2 className="text-2xl md:text-3xl font-bold text-[#1D2939] mb-4">
-                  Contact Us
+                  Kontakt oss
                 </h2>
                 <form className="space-y-4" onSubmit={handleSubmit}>
                   <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
+                    <Label htmlFor="name">Navn</Label>
                     <Input
                       id="name"
                       name="name"
-                      placeholder="Your name"
+                      placeholder="Ditt navn"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">E-post</Label>
                     <Input
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="Your email"
+                      placeholder="Din e-post"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
+                    <Label htmlFor="subject">Emne</Label>
                     <Input
                       id="subject"
                       name="subject"
-                      placeholder="Subject"
+                      placeholder="Emne"
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
+                    <Label htmlFor="message">Melding</Label>
                     <Textarea
                       id="message"
                       name="message"
-                      placeholder="Your message"
+                      placeholder="Din melding"
                       rows={4}
                       value={formData.message}
                       onChange={handleInputChange}
@@ -337,7 +337,7 @@ export function ContactContent() {
                     className="w-full"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "Sending..." : "Send Message"}
+                    {isSubmitting ? "Sender..." : "Send melding"}
                   </Button>
                 </form>
               </CardContent>

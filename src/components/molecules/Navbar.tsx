@@ -21,16 +21,16 @@ import {
 import { useState } from "react";
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "About Us", href: "#about", hasDropdown: true },
-  { name: "Wines", href: "/viinit-luettelo" },
-  { name: "Contact Us", href: "/ota-yhteytta" },
+  { name: "Hjem", href: "/" },
+  { name: "Om oss", href: "#about", hasDropdown: true },
+  { name: "Viner", href: "/viinit-luettelo" },
+  { name: "Kontakt oss", href: "/ota-yhteytta" },
   { name: "In English", href: "/in-english" },
 ];
 
 const aboutUsSubItems = [
-  { name: "Company Profile", href: "/yrityksen-profiili" },
-  { name: "Our Teams", href: "/tiimimme" },
+  { name: "Selskapsprofil", href: "/yrityksen-profiili" },
+  { name: "Vårt team", href: "/tiimimme" },
 ];
 
 export default function Navbar() {
@@ -75,7 +75,7 @@ export default function Navbar() {
           </SheetTrigger>
           <SheetContent side="right">
             {/* Visible title for accessibility */}
-            <SheetTitle className="text-lg font-bold">Menu</SheetTitle>
+            <SheetTitle className="text-lg font-bold">Meny</SheetTitle>
             <div className="grid gap-2.5 py-5">
               {navItems.map((item) => (
                 <div key={item.name}>

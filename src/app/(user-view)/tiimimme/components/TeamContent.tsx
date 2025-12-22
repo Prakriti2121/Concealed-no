@@ -114,7 +114,7 @@ export function TeamContent() {
       <div className="flex items-center justify-center min-h-[50vh] py-8 sm:py-12 md:py-16">
         <div className="p-4 sm:p-6 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800 mx-4">
           <p className="text-red-600 dark:text-red-400 font-medium text-sm sm:text-base">
-            Error: {error}
+            Feil: {error}
           </p>
         </div>
       </div>
@@ -149,7 +149,7 @@ export function TeamContent() {
                     ) : (
                       <div className="w-full h-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
                         <span className="text-base sm:text-lg text-[#282828]">
-                          No Image
+                          Ingen bilde
                         </span>
                       </div>
                     )}

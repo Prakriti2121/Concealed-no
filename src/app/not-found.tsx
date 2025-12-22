@@ -9,26 +9,26 @@ export default function NotFound() {
           404
         </h1>
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-          Page Not Found
+          Siden ble ikke funnet
         </h2>
 
         <p className="text-gray-700 dark:text-gray-300">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          Siden du leter etter eksisterer ikke eller har blitt flyttet.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
           <Button asChild>
-            <Link href="/">Go to Homepage</Link>
+            <Link href="/">Gå til hjemmesiden</Link>
           </Button>
 
           <Button asChild variant="outline">
-            <Link href="/viineja-luettelo">Browse Wines</Link>
+            <Link href="/viineja-luettelo">Bla gjennom viner</Link>
           </Button>
         </div>
 
         <div className="pt-6 border-t border-gray-200 dark:border-gray-700">
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-            Quick Links
+            Hurtiglenker
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 text-sm">
@@ -36,22 +36,22 @@ export default function NotFound() {
               href="/viinit-luettelo"
               className="text-gray-600 hover:underline"
             >
-              Wine Articles
+              Vinartikler
             </Link>
             <Link
               href="/yrityksen-profiili"
               className="text-gray-600 hover:underline"
             >
-              Company Profile
+              Selskapsprofil
             </Link>
             <Link href="/tiimimme" className="text-gray-600 hover:underline">
-              Our Team
+              Vårt team
             </Link>
             <Link
               href="/ota-yhteytta"
               className="text-gray-600 hover:underline"
             >
-              Contact Us
+              Kontakt oss
             </Link>
           </div>
         </div>

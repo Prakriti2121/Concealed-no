@@ -19,7 +19,7 @@ export async function generateMetadata() {
     metadataBase: new URL(baseUrl),
     title: data.seoTitle || "Ota yhteyttä - Concealed Wines Finland",
     description:
-      data.metaDesc || "Get in touch with Concealed Wines. We're here to help!",
+      data.metaDesc || "Ta kontakt med Concealed Wines. Vi er her for å hjelpe!",
     robots: getRobotsString(),
     alternates: {
       canonical: canonicalUrl,

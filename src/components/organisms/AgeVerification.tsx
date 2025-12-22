@@ -42,35 +42,35 @@ const AgeVerification: React.FC = () => {
 
         <div className="text-center space-y-4 sm:space-y-6 pr-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">
-            Age Verification
+            Aldersverifisering
           </h2>
 
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300">
-            You must be 18 or older to enter.
+            Du må være 18 år eller eldre for å gå inn.
           </p>
 
           <div className="pt-2 sm:pt-4">
             <p className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">
-              Are you 18 or older?
+              Er du 18 år eller eldre?
             </p>
             <div className="flex gap-3 sm:gap-4">
               <Button
                 onClick={handleConfirm}
                 className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors"
               >
-                Yes
+                Ja
               </Button>
               <Button
                 onClick={handleDecline}
                 className="flex-1 bg-red-600 hover:bg-red-700 text-white py-3 sm:py-4 text-base sm:text-lg font-medium transition-colors"
               >
-                No
+                Nei
               </Button>
             </div>
           </div>
 
           <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 pt-2 sm:pt-4">
-            By entering, you agree to our terms.
+            Ved å gå inn godtar du våre vilkår.
           </p>
         </div>
       </div>

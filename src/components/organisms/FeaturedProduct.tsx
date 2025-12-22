@@ -99,7 +99,7 @@ const FeaturedProduct = () => {
 
         <div className="mt-6">
           <div className="inline-block bg-gray-200 text-transparent px-6 py-2 rounded-3xl animate-pulse">
-            Näytä kaikki viinit
+            Vis alle viner
           </div>
         </div>
 
@@ -139,7 +139,7 @@ const FeaturedProduct = () => {
           Kunnianhimoinen viinin maahantuoja
         </div>
         <div className="text-lg text-[#282828]">
-          Viineitä ei ole tällä hetkellä saatavilla.
+          Viner er for øyeblikket ikke tilgjengelige.
         </div>
       </div>
     );
@@ -283,7 +283,7 @@ const FeaturedProduct = () => {
           href="/viinit-luettelo"
           className="text-base sm:text-lg md:text-xl text-center inline-block bg-black text-white px-4 sm:px-6 py-2 rounded-3xl hover:bg-white hover:text-black hover:border border-black hover:scale-90 transition-all duration-300 ease-in-out"
         >
-          Näytä kaikki viinit
+          Vis alle viner
         </Link>
       </div>
 

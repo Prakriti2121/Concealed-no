@@ -30,8 +30,8 @@ export async function generateMetadata(): Promise<Metadata> {
   if (!res.ok) {
     // fallback values
     return {
-      title: "All Wines",
-      description: "Browse our full catalog of wines.",
+      title: "Alle viner",
+      description: "Bla gjennom vår komplette katalog av viner.",
     };
   }
 
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: data.seoTitle || data.title,
-    description: data.metaDesc || "Browse our full catalog of wines.",
+    description: data.metaDesc || "Bla gjennom vår komplette katalog av viner.",
     alternates: {
       canonical: canonicalUrl,
     },
@@ -95,7 +95,7 @@ export default async function Page({ searchParams }: PageProps) {
         dangerouslySetInnerHTML={{ __html: organization }}
       />
       <div className="container mx-auto px-4 py-8 max-w-7xl">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-center text-[#1D2939]">All Wines</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-center text-[#1D2939]">Alle viner</h1>
 
         {displayed.length > 0 ? (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -132,7 +132,7 @@ export default async function Page({ searchParams }: PageProps) {
                         </h2>
                       </Link>
                       <p className="text-sm mb-4 text-[#282828]">
-                        Code: {wine.productCode}
+                        Kode: {wine.productCode}
                       </p>
                     </div>
 
@@ -166,7 +166,7 @@ export default async function Page({ searchParams }: PageProps) {
             ))}
           </div>
         ) : (
-          <p className="text-center text-base text-[#282828]">No wines found.</p>
+          <p className="text-center text-base text-[#282828]">Ingen viner funnet.</p>
         )}
 
         {/* Pagination */}
@@ -176,18 +176,18 @@ export default async function Page({ searchParams }: PageProps) {
               href={`?page=${safePage - 1}`}
               className="px-6 py-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all font-medium"
             >
-              Previous
+              Forrige
             </Link>
           )}
           <span className="text-lg font-semibold text-[#282828]">
-            Page {safePage} of {totalPages}
+            Side {safePage} av {totalPages}
           </span>
           {safePage < totalPages && (
             <Link
               href={`?page=${safePage + 1}`}
               className="px-6 py-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-all font-medium"
             >
-              Next
+              Neste
             </Link>
           )}
         </div>

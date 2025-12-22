@@ -107,7 +107,7 @@ export function ProfileContent() {
   }
 
   if (!pageData) {
-    return <div>Error loading page data</div>;
+    return <div>Feil ved lasting av sidedata</div>;
   }
 
   // Get the current URL (client-side)
@@ -144,7 +144,7 @@ export function ProfileContent() {
                       className="gap-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
                     >
                       <Share2 className="h-4 w-4" />
-                      Share
+                      Del
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-2">
@@ -159,7 +159,7 @@ export function ProfileContent() {
                           className="h-9 w-9"
                         >
                           <Facebook className="h-4 w-4" />
-                          <span className="sr-only">Share on Facebook</span>
+                          <span className="sr-only">Del på Facebook</span>
                         </Button>
                       </FacebookShareButton>
                       <TwitterShareButton
@@ -172,7 +172,7 @@ export function ProfileContent() {
                           className="h-9 w-9"
                         >
                           <Twitter className="h-4 w-4" />
-                          <span className="sr-only">Share on Twitter</span>
+                          <span className="sr-only">Del på Twitter</span>
                         </Button>
                       </TwitterShareButton>
                       <LinkedinShareButton
@@ -185,7 +185,7 @@ export function ProfileContent() {
                           className="h-9 w-9"
                         >
                           <Linkedin className="h-4 w-4" />
-                          <span className="sr-only">Share on LinkedIn</span>
+                          <span className="sr-only">Del på LinkedIn</span>
                         </Button>
                       </LinkedinShareButton>
                     </div>

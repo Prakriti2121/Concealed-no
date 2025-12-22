@@ -19,7 +19,7 @@ export async function generateMetadata() {
     title: data.seoTitle || data.title,
     description:
       data.metaDesc ||
-      "Meet the team behind Concealed Wines, your trusted wine importers in Scandinavia.",
+      "Møt teamet bak Concealed Wines, din pålitelige vinimportør i Skandinavia.",
     robots: getRobotsString(),
     alternates: {
       canonical: canonicalUrl,

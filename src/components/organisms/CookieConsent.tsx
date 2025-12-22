@@ -30,7 +30,7 @@ const CookieConsent: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 py-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between">
         <div className="mb-4 sm:mb-0">
           <p className="text-black font-medium">
-            This website uses cookies to improve your experience.
+            Denne nettsiden bruker informasjonskapsler for å forbedre din opplevelse.
           </p>
         </div>
         <div className="flex space-x-4">
@@ -38,13 +38,13 @@ const CookieConsent: React.FC = () => {
             onClick={handleAccept}
             className="px-4 py-2 bg-black text-white font-medium transition-colors duration-200 hover:bg-gray-800"
           >
-            Accept
+            Godta
           </button>
           <button
             onClick={handleDecline}
             className="px-4 py-2 bg-white text-black border border-black font-medium transition-colors duration-200 hover:bg-gray-100"
           >
-            Decline
+            Avslå
           </button>
         </div>
       </div>

@@ -113,7 +113,7 @@ const Footer = () => {
                   {country.name === "SWEDEN" && (
                     <div className="space-y-2">
                       <div className="pl-6 text-sm text-gray-700">
-                        Head Office
+                        Hovedkontor
                       </div>
                       <div className="flex items-start gap-2">
                         <LocationIcon className="text-[#e0944e] mt-0.5 h-4 w-4 shrink-0" />
@@ -156,7 +156,7 @@ const Footer = () => {
           <div className="flex flex-col items-center justify-between gap-3 py-4 sm:flex-row sm:gap-4 md:gap-4">
             <div className="order-2 flex items-center gap-3 sm:order-1">
               <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-500">Proud owner of</span>
+                <span className="text-xs text-gray-500">Stolt eier av</span>
                 <Link
                   href="https://www.winetourism.com/"
                   target="_blank"

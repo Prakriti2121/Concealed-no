@@ -89,7 +89,7 @@ const Jumbotron = () => {
         <div className="grid md:grid-cols-2 items-center gap-6 md:gap-8 w-full">
           <div className="z-10 order-2 md:order-1 space-y-4 sm:space-y-6">
             {error ? (
-              <p className="text-xl text-red-500">Error: {error}</p>
+              <p className="text-xl text-red-500">Feil: {error}</p>
             ) : latestProduct ? (
               <>
                 <motion.div

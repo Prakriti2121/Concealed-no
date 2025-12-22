@@ -54,7 +54,7 @@ const BreadCrumb: React.FC<BreadCrumbProps> = ({
   return (
     <div className="text-[0.5rem] sm:text-xs md:text-sm my-1 lg:my-4 flex gap-1">
       <Link href="/" className="text-orange-600">
-        Home
+        Hjem
       </Link>
       {breadcrumb.map((crumb, index) => (
         <LinkElement key={index} title={crumb.title} link={crumb.link} />

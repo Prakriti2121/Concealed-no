@@ -25,18 +25,18 @@ export default function SidebarContent() {
         <div className="mt-8">
           <div className="flex items-center gap-2 mb-4">
             <h3 className="text-base md:text-lg font-medium text-[#1D2939]">
-              Concealed Wines Finland
+              Concealed Wines Norway
             </h3>
           </div>
 
           <div className="space-y-5 text-sm text-[#282828]">
-            <p className="font-medium text-[#1D2939]">Concealed Wines OY (2506194-2).</p>
+            <p className="font-medium text-[#1D2939]">Concealed Wines NUF (996 166 651)</p>
 
             <div className="flex items-start gap-2 text-[#282828]">
               <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 text-[#282828]" />
               <div>
-                <p>Närpesvägen 25 c/o Best bokföring ,</p>
-                <p>64200 Närpes, Finland</p>
+                <p>Ulvenveien 88 c/o Krogsvold Smith,</p>
+                <p>0581 Oslo, Norway</p>
               </div>
             </div>
 
@@ -56,7 +56,7 @@ export default function SidebarContent() {
                 href="mailto:info@concealedwines.no"
                 className="text-[#282828] hover:text-[#1D2939] transition-colors"
               >
-                info@concealedwines.fi
+                info@concealedwines.no
               </a>
             </div>
           </div>

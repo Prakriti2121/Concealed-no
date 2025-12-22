@@ -16,6 +16,7 @@ import {
 import BreadCrumb from "../../../components/breadcrumb/breadcrumb";
 import SharePopover from "../../../viinit-luettelo/components/SharePopover";
 import ProductImageZoom from "./_components/ProductImage";
+import PDFDownloadButton from "./_components/PDFDownloadButton";
 import type { Metadata } from "next";
 import {
   productSchemaGenerator,
@@ -39,7 +40,7 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Produkt ikke funnet",
+      title: "Product Not Found",
       description: "",
     };
   }
@@ -444,8 +445,9 @@ export default async function Page({ params }: PageProps) {
             </div>
           )}
 
-          <div className="py-4">
+          <div className="py-4 flex flex-wrap items-center gap-3">
             <SharePopover title={product.title} />
+            <PDFDownloadButton product={product} />
           </div>
 
           <div className="text-xs sm:text-sm text-gray-500 flex items-center pt-2">

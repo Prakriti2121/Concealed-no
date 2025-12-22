@@ -224,15 +224,15 @@ export const generateProductPDF = async (product: Product) => {
       product.vintage ||
       product.alcohol
     ) {
-      rightYPosition = addInfoCard("Tuotetiedot", rightYPosition, () => {
+      rightYPosition = addInfoCard("Produktdetaljer", rightYPosition, () => {
         let y = rightYPosition + 14;
         pdf.setFontSize(9);
         pdf.setTextColor(60, 60, 60);
 
         if (product.producerUrl) {
-          const producer = product.producerUrl.split("/").pop() || "Tuottaja";
+          const producer = product.producerUrl.split("/").pop() || "Produsent";
           pdf.setFont("helvetica", "bold");
-          pdf.text("Tuottaja:", rightColumnX + 3, y);
+          pdf.text("Produsent:", rightColumnX + 3, y);
           pdf.setFont("helvetica", "normal");
           const producerLines = pdf.splitTextToSize(
             producer,
@@ -247,7 +247,7 @@ export const generateProductPDF = async (product: Product) => {
 
         if (product.region) {
           pdf.setFont("helvetica", "bold");
-          pdf.text("Alue:", rightColumnX + 3, y);
+          pdf.text("Region:", rightColumnX + 3, y);
           pdf.setFont("helvetica", "normal");
           pdf.text(product.region, rightColumnX + 25, y);
           y += 7;
@@ -255,7 +255,7 @@ export const generateProductPDF = async (product: Product) => {
 
         if (product.vintage) {
           pdf.setFont("helvetica", "bold");
-          pdf.text("Vuosikerta:", rightColumnX + 3, y);
+          pdf.text("Årgang:", rightColumnX + 3, y);
           pdf.setFont("helvetica", "normal");
           pdf.text(product.vintage, rightColumnX + 25, y);
           y += 7;
@@ -263,7 +263,7 @@ export const generateProductPDF = async (product: Product) => {
 
         if (product.alcohol) {
           pdf.setFont("helvetica", "bold");
-          pdf.text("Alkoholi:", rightColumnX + 3, y);
+          pdf.text("Alkohol:", rightColumnX + 3, y);
           pdf.setFont("helvetica", "normal");
           pdf.text(`${product.alcohol}%`, rightColumnX + 25, y);
           y += 7;
@@ -282,7 +282,7 @@ export const generateProductPDF = async (product: Product) => {
         : Object.values(product.taste || {});
 
       if (tasteArray.length > 0) {
-        rightYPosition = addInfoCard("Makuprofiili", rightYPosition, () => {
+        rightYPosition = addInfoCard("Smaksprofil", rightYPosition, () => {
           let y = rightYPosition + 14;
           pdf.setFontSize(9);
           pdf.setFont("helvetica", "normal");
@@ -303,14 +303,14 @@ export const generateProductPDF = async (product: Product) => {
 
     // Wine Details Card
     if (product.bottleVolume || product.composition || product.closure) {
-      rightYPosition = addInfoCard("Viinin tiedot", rightYPosition, () => {
+      rightYPosition = addInfoCard("Vininformasjon", rightYPosition, () => {
         let y = rightYPosition + 14;
         pdf.setFontSize(9);
         pdf.setTextColor(60, 60, 60);
 
         if (product.bottleVolume) {
           pdf.setFont("helvetica", "bold");
-          pdf.text("Tilavuus:", rightColumnX + 3, y);
+          pdf.text("Volum:", rightColumnX + 3, y);
           pdf.setFont("helvetica", "normal");
           pdf.text(`${product.bottleVolume} ml`, rightColumnX + 25, y);
           y += 7;
@@ -318,7 +318,7 @@ export const generateProductPDF = async (product: Product) => {
 
         if (product.composition) {
           pdf.setFont("helvetica", "bold");
-          pdf.text("Koostumus:", rightColumnX + 3, y);
+          pdf.text("Sammensetning:", rightColumnX + 3, y);
           pdf.setFont("helvetica", "normal");
           const compLines = pdf.splitTextToSize(
             product.composition,
@@ -333,7 +333,7 @@ export const generateProductPDF = async (product: Product) => {
 
         if (product.closure) {
           pdf.setFont("helvetica", "bold");
-          pdf.text("Sulkija:", rightColumnX + 3, y);
+          pdf.text("Lukking:", rightColumnX + 3, y);
           pdf.setFont("helvetica", "normal");
           pdf.text(product.closure, rightColumnX + 25, y);
           y += 7;
@@ -348,21 +348,21 @@ export const generateProductPDF = async (product: Product) => {
 
     // Food Pairings Section
     const foodPairings: string[] = [];
-    if (product.vegetables) foodPairings.push("Vihannekset");
-    if (product.roastedVegetables) foodPairings.push("Paahdetut vihannekset");
-    if (product.softCheese) foodPairings.push("Pehmeä juusto");
-    if (product.hardCheese) foodPairings.push("Kova juusto");
-    if (product.starches) foodPairings.push("Tärkkelys");
-    if (product.fish) foodPairings.push("Kala");
-    if (product.richFish) foodPairings.push("Rasvainen kala");
+    if (product.vegetables) foodPairings.push("Grønnsaker");
+    if (product.roastedVegetables) foodPairings.push("Ovnsbakte grønnsaker");
+    if (product.softCheese) foodPairings.push("Myk ost");
+    if (product.hardCheese) foodPairings.push("Hard ost");
+    if (product.starches) foodPairings.push("Stivelse");
+    if (product.fish) foodPairings.push("Fisk");
+    if (product.richFish) foodPairings.push("Fet fisk");
     if (product.whiteMeatPoultry)
-      foodPairings.push("Valkoinen liha/Siipikarja");
-    if (product.lambMeat) foodPairings.push("Lammas");
-    if (product.porkMeat) foodPairings.push("Sianliha");
-    if (product.redMeatBeef) foodPairings.push("Punainen liha/Naudanliha");
-    if (product.gameMeat) foodPairings.push("Riistaliha");
-    if (product.curedMeat) foodPairings.push("Suolattu liha");
-    if (product.sweets) foodPairings.push("Makeiset");
+      foodPairings.push("Hvitt kjøtt/Fjærfe");
+    if (product.lambMeat) foodPairings.push("Lam");
+    if (product.porkMeat) foodPairings.push("Svin");
+    if (product.redMeatBeef) foodPairings.push("Rødt kjøtt/Storfekjøtt");
+    if (product.gameMeat) foodPairings.push("Vilt");
+    if (product.curedMeat) foodPairings.push("Speket kjøtt");
+    if (product.sweets) foodPairings.push("Søtsaker");
 
     if (foodPairings.length > 0) {
       const sectionStartY = yPosition;
@@ -373,7 +373,7 @@ export const generateProductPDF = async (product: Product) => {
       pdf.setFontSize(11);
       pdf.setFont("helvetica", "bold");
       pdf.setTextColor(224, 148, 78);
-      pdf.text("Ruokayhdistelmät", margin + 3, yPosition + 5);
+      pdf.text("Matrettkombinasjoner", margin + 3, yPosition + 5);
       yPosition += 10;
 
       pdf.setFontSize(9);
@@ -411,7 +411,7 @@ export const generateProductPDF = async (product: Product) => {
       pdf.setFontSize(11);
       pdf.setFont("helvetica", "bold");
       pdf.setTextColor(224, 148, 78);
-      pdf.text("Tietoa tuottajasta", margin + 3, yPosition + 5);
+      pdf.text("Om produsenten", margin + 3, yPosition + 5);
       yPosition += 10;
 
       pdf.setFontSize(9);
@@ -448,7 +448,7 @@ export const generateProductPDF = async (product: Product) => {
       pdf.setFontSize(11);
       pdf.setFont("helvetica", "bold");
       pdf.setTextColor(224, 148, 78);
-      pdf.text("Lisätietoja", margin + 3, yPosition + 5);
+      pdf.text("Tilleggsinfo", margin + 3, yPosition + 5);
       yPosition += 10;
 
       pdf.setFontSize(9);
@@ -487,7 +487,7 @@ export const generateProductPDF = async (product: Product) => {
       pdf.setFontSize(11);
       pdf.setFont("helvetica", "bold");
       pdf.setTextColor(224, 148, 78);
-      pdf.text("Palkinnot", margin + 3, yPosition + 5);
+      pdf.text("Utmerkelser", margin + 3, yPosition + 5);
       yPosition += 10;
 
       pdf.setFontSize(9);
@@ -518,13 +518,13 @@ export const generateProductPDF = async (product: Product) => {
     pdf.setTextColor(224, 148, 78);
 
     if (product.buyLink) {
-      pdf.textWithLink("Osta tämä viini →", margin, footerY, {
+      pdf.textWithLink("Kjøp denne vinen →", margin, footerY, {
         url: product.buyLink,
       });
     }
 
     pdf.setTextColor(120, 120, 120);
-    const dateText = `Luotu: ${new Date().toLocaleDateString("fi-FI")}`;
+    const dateText = `Generert: ${new Date().toLocaleDateString("nb-NO")}`;
     const dateWidth = pdf.getTextWidth(dateText);
     pdf.text(dateText, pageWidth - margin - dateWidth, footerY);
 

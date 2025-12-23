@@ -330,12 +330,18 @@ export const generateProductPDF = async (product: Product) => {
           });
           y += 3;
         }
-
         if (product.closure) {
           pdf.setFont("helvetica", "bold");
           pdf.text("Lukking:", rightColumnX + 3, y);
           pdf.setFont("helvetica", "normal");
-          pdf.text(product.closure, rightColumnX + 25, y);
+          const closureLines = pdf.splitTextToSize(
+            product.closure,
+            rightColumnWidth - 35
+          );
+          closureLines.forEach((line: string, index: number) => {
+            pdf.text(line, rightColumnX + (index === 0 ? 32 : 3), y);
+            if (index < closureLines.length - 1) y += 4;
+          });
           y += 7;
         }
 
@@ -355,8 +361,7 @@ export const generateProductPDF = async (product: Product) => {
     if (product.starches) foodPairings.push("Stivelse");
     if (product.fish) foodPairings.push("Fisk");
     if (product.richFish) foodPairings.push("Fet fisk");
-    if (product.whiteMeatPoultry)
-      foodPairings.push("Hvitt kjøtt/Fjærfe");
+    if (product.whiteMeatPoultry) foodPairings.push("Hvitt kjøtt/Fjærfe");
     if (product.lambMeat) foodPairings.push("Lam");
     if (product.porkMeat) foodPairings.push("Svin");
     if (product.redMeatBeef) foodPairings.push("Rødt kjøtt/Storfekjøtt");

@@ -81,7 +81,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ data }) => {
             <Link href="/yrityksen-profiili">
               <Button className="relative overflow-hidden bg-[#09090B] text-xl px-6 py-3 h-full text-white border border-transparent group transition-all duration-300 ease-in-out hover:border-black">
                 <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:text-black">
-                  Lue lisää
+                  Les mer
                 </span>
                 <span className="absolute left-0 top-0 w-0 h-full bg-white transition-all duration-500 ease-in-out group-hover:w-full"></span>
               </Button>

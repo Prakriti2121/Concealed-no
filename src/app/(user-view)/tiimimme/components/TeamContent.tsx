@@ -110,7 +110,7 @@ export function TeamContent() {
       <div className="flex items-center justify-center min-h-[50vh] py-8 sm:py-12 md:py-16">
         <div className="p-4 sm:p-6 bg-red-50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-800 mx-4">
           <p className="text-red-600 dark:text-red-400 font-medium text-sm sm:text-base">
-            Virhe: {error}
+            Feil: {error}
           </p>
         </div>
       </div>
@@ -120,12 +120,12 @@ export function TeamContent() {
   return (
     <div className="w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6">
-        <BreadCrumb title1="Tiimimme" />
+        <BreadCrumb title1="Vårt team" />
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
           {/* Main Content */}
           <div className="w-full lg:flex-1">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[1.75rem] font-bold mb-6 text-center lg:text-left text-[#1D2939]">
-              Tiimimme
+              Vårt team
             </h1>
             
             <div className="space-y-8 md:space-y-12">

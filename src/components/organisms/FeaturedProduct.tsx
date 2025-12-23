@@ -56,12 +56,12 @@ const FeaturedProduct = () => {
     return (
       <div className="w-full max-w-6xl mx-auto px-4 py-12 sm:py-20 text-center">
         <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-8 text-[#1D2939]">
-          Kunnianhimoinen viinin maahantuoja
+          Ambisiøs vinimportør
         </div>
 
         <div className="flex justify-center mb-8">
           <span className="text-lg sm:text-xl md:text-2xl border-b border-black inline-block mt-2 sm:mt-4 text-[#282828]">
-            Laatu on tärkeämpää kuin määrä
+            Kvalitet er viktigere enn kvantitet
           </span>
         </div>
 
@@ -125,7 +125,7 @@ const FeaturedProduct = () => {
     return (
       <div className="w-full max-w-6xl mx-auto px-4 py-12 sm:py-20 text-center">
         <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-8 text-[#1D2939]">
-          Kunnianhimoinen viinin maahantuoja
+          Ambisiøs vinimportør
         </div>
         <div className="text-lg text-red-500">{error}</div>
       </div>
@@ -136,7 +136,7 @@ const FeaturedProduct = () => {
     return (
       <div className="w-full max-w-6xl mx-auto px-4 py-12 sm:py-20 text-center">
         <div className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-8 text-[#1D2939]">
-          Kunnianhimoinen viinin maahantuoja
+          Ambisiøs vinimportør
         </div>
         <div className="text-lg text-[#282828]">
           Viner er for øyeblikket ikke tilgjengelige.
@@ -156,7 +156,7 @@ const FeaturedProduct = () => {
           viewport={{ once: false, amount: 0.5 }}
           transition={{ duration: 0.5 }}
         >
-          Kunnianhimoinen viinin maahantuoja
+          Ambisiøs vinimportør
         </motion.div>
         <div className="flex justify-center text-center">
           <motion.div
@@ -166,7 +166,7 @@ const FeaturedProduct = () => {
             viewport={{ once: false, amount: 0.5 }}
             transition={{ duration: 0.5 }}
           >
-            Laatu on tärkeämpää kuin määrä
+            Kvalitet er viktigere enn kvantitet
           </motion.div>
         </div>
       </div>

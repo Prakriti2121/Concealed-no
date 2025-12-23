@@ -8,13 +8,13 @@ export default function SidebarContent() {
     <div className="w-full h-fit bg-background dark:bg-sidebar-background rounded-lg shadow-sm">
       <div className=" px-4 md:px-8">
         <div className="mb-6">
-          <h3 className="text-lg md:text-xl font-medium mb-3 text-[#1D2939]">Meistä</h3>
+          <h3 className="text-lg md:text-xl font-medium mb-3 text-[#1D2939]">Om oss</h3>
           <div className="text-sm text-[#282828]">
             <p>
-              Concealed Wines on viinintoimittaja Pohjoisen markkinoilla. Meidän
-              tavoite on toimittaa loistoviinejä kuluttajilla. Tällä hetkellä
-              myymme muutamia loistoviinejä Suomen markkinoilla ja samaan aikaan
-              tuomme uusia viinejä markkinoille.
+              Concealed Wines er en vinleverandør i de nordiske markedene. Vårt
+              mål er å levere utmerkede viner til forbrukere. For øyeblikket
+              selger vi noen utmerkede viner i det norske markedet og samtidig
+              introduserer vi nye viner til markedet.
             </p>
           </div>
         </div>

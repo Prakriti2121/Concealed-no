@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(baseUrl),
     title: data.seoTitle || data.title,
     description:
-      data.metaDesc || "Velkommen til Concealed Wines Finland hjemmeside!",
+      data.metaDesc || "Velkommen til Concealed Wines Norge hjemmeside!",
     robots: getRobotsString(),
     alternates: {
       canonical: canonicalUrl,
@@ -56,7 +56,7 @@ export default async function Home() {
         className="yoast-schema-graph"
         dangerouslySetInnerHTML={{ __html: organization }}
       />
-      <h1 className="sr-only">Concealed Wines Finland</h1>
+      <h1 className="sr-only">Concealed Wines Norway</h1>
       <Jumbotron />
       <BannerSection />
       <FeaturedProduct />

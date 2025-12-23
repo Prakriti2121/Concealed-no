@@ -35,7 +35,7 @@ const SelskapProfilePage = () => {
   // Generate breadcrumb schema
   const breadcrumbs = breadcrumbSchemaGenerator([
     {
-      name: "Yrityksen profiili",
+      name: "Selskapsprofil",
       url: `${process.env.NEXT_PUBLIC_BASE_URL}/yrityksen-profiili`,
     },
   ]);

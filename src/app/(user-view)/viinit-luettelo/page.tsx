@@ -74,7 +74,7 @@ export default async function Page({ searchParams }: PageProps) {
   // Generate breadcrumb schema
   const breadcrumbs = breadcrumbSchemaGenerator([
     {
-      name: "Viinit Luettelo",
+      name: "Vinliste",
       url: `${baseUrl}/viinit-luettelo`,
     },
   ]);
@@ -146,17 +146,17 @@ export default async function Page({ searchParams }: PageProps) {
                         className="block"
                       >
                         <button className="w-full bg-[#333333] text-white py-3 px-6 rounded-lg font-semibold hover:bg-black transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
-                          Lue lisää
+                          Les mer
                         </button>
                       </Link>
 
                       <div className="text-sm leading-relaxed pt-2 border-t border-gray-100 text-[#282828]">
-                        Saatavana Alkon myymälöiden •{" "}
+                        Tilgjengelig i Vinmonopolet •{" "}
                         <Link
                           href={wine.buyLink}
                           className="hover:text-black hover:underline transition-colors text-[#282828]"
                         >
-                          Etsi lähin myymälä
+                          Finn nærmeste butikk
                         </Link>
                       </div>
                     </div>

@@ -115,7 +115,7 @@ const Jumbotron = () => {
                   className="relative overflow-hidden bg-[#09090B] text-base sm:text-lg md:text-xl px-3 sm:px-4 py-2 h-full text-white border border-transparent group transition-all duration-300 ease-in-out hover:border-black"
                 >
                   <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:text-black">
-                    Lue lisää
+                    Les mer
                   </span>
                   <span className="absolute left-0 top-0 w-0 h-full bg-white transition-all duration-500 ease-in-out group-hover:w-full"></span>
                 </Button>
@@ -140,18 +140,18 @@ const Jumbotron = () => {
                   transition={{ duration: 0.5, delay: 0.3 }}
                   className="my-3 sm:my-4 md:my-6 lg:my-8 text-xs sm:text-sm md:text-base text-[#282828]"
                 >
-                  Berried and fresh reds are light or medium-bodied wines
-                  infused with the flavours and activity of fresh berries. You
-                  can discern lippik cranberry, raspberry and cherry notes in
-                  these wines. Crisp freshness makes them ideal for a variety of
-                  foods.
+                  Bæraktige og friske rødviner er lette eller middels fyldig viner
+                  fylt med smaken og aktiviteten av friske bær. Du kan skjelne
+                  tydelige tyttebær-, bringebær- og kirsebærtoner i
+                  disse vinene. Sprø friskhet gjør dem ideelle til en rekke
+                  matretter.
                 </motion.p>
                 <Button
                   onClick={() => router.push("/viineja-luettelo/viinit/default-slug")}
                   className="relative overflow-hidden bg-[#09090B] text-base sm:text-lg md:text-xl px-3 sm:px-4 py-2 h-full text-white border border-transparent group transition-all duration-300 ease-in-out hover:border-black"
                 >
                   <span className="relative z-10 transition-all duration-300 ease-in-out group-hover:text-black">
-                    Lue lisää
+                    Les mer
                   </span>
                   <span className="absolute left-0 top-0 w-0 h-full bg-white transition-all duration-500 ease-in-out group-hover:w-full"></span>
                 </Button>

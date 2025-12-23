@@ -40,7 +40,7 @@ export async function generateMetadata({
 
   if (!product) {
     return {
-      title: "Product Not Found",
+      title: "Produkt ikke funnet",
       description: "",
     };
   }
@@ -119,7 +119,7 @@ export default async function Page({ params }: PageProps) {
   const product = await getWineBySlug(slug);
 
   if (!product) {
-    return <div>Tuotetta ei löytynyt!</div>;
+    return <div>Produkt ikke funnet!</div>;
   }
 
   const tasteArray = Array.isArray(product.taste)
@@ -130,20 +130,20 @@ export default async function Page({ params }: PageProps) {
 
   const getFoodPairings = () => {
     const pairings: string[] = [];
-    if (product.vegetables) pairings.push("Vihannekset");
-    if (product.roastedVegetables) pairings.push("Paahdetut vihannekset");
-    if (product.softCheese) pairings.push("Pehmeä juusto");
-    if (product.hardCheese) pairings.push("Kova juusto");
-    if (product.starches) pairings.push("Tärkkelys");
-    if (product.fish) pairings.push("Kala");
-    if (product.richFish) pairings.push("Rasvainen kala");
-    if (product.whiteMeatPoultry) pairings.push("Valkoinen liha/Siipikarja");
-    if (product.lambMeat) pairings.push("Lammas");
-    if (product.porkMeat) pairings.push("Sianliha");
-    if (product.redMeatBeef) pairings.push("Punainen liha/Naudanliha");
-    if (product.gameMeat) pairings.push("Riistaliha");
-    if (product.curedMeat) pairings.push("Suolattu liha");
-    if (product.sweets) pairings.push("Makeiset");
+    if (product.vegetables) pairings.push("Grønnsaker");
+    if (product.roastedVegetables) pairings.push("Stekte grønnsaker");
+    if (product.softCheese) pairings.push("Myk ost");
+    if (product.hardCheese) pairings.push("Hard ost");
+    if (product.starches) pairings.push("Stivelse");
+    if (product.fish) pairings.push("Fisk");
+    if (product.richFish) pairings.push("Fet fisk");
+    if (product.whiteMeatPoultry) pairings.push("Hvitt kjøtt/Fjærkre");
+    if (product.lambMeat) pairings.push("Lam");
+    if (product.porkMeat) pairings.push("Svinekjøtt");
+    if (product.redMeatBeef) pairings.push("Rødt kjøtt/Storfekjøtt");
+    if (product.gameMeat) pairings.push("Vilt");
+    if (product.curedMeat) pairings.push("Speket kjøtt");
+    if (product.sweets) pairings.push("Søtsaker");
     return pairings;
   };
 
@@ -176,7 +176,7 @@ export default async function Page({ params }: PageProps) {
 
   const breadcrumbs = breadcrumbSchemaGenerator([
     {
-      name: "Viinit-luettelo",
+      name: "Vinliste",
       url: `${baseUrl}/viinit-luettelo`,
     },
     {
@@ -204,7 +204,7 @@ export default async function Page({ params }: PageProps) {
       />
 
       <div className="mb-4">
-        <BreadCrumb title1="Viineja-luettelo » Viinit" title2={product.title} />
+        <BreadCrumb title1="Vinliste » Viner" title2={product.title} />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
@@ -250,22 +250,22 @@ export default async function Page({ params }: PageProps) {
               <div className="flex flex-wrap gap-2">
                 {product.isNew && (
                   <Badge className="bg-[#e0944e]/10 text-[#e0944e] border-[#e0944e]/30 text-xs sm:text-sm">
-                    Uusi
+                    Ny
                   </Badge>
                 )}
                 {product.organic && (
                   <Badge className="bg-green-50 text-green-700 border-green-200 text-xs sm:text-sm">
-                    <Leaf size={14} className="mr-1" /> Luomu
+                    <Leaf size={14} className="mr-1" /> Økologisk
                   </Badge>
                 )}
                 {product.featured && (
                   <Badge className="bg-amber-50 text-amber-700 border-amber-200 text-xs sm:text-sm">
-                    <Award size={14} className="mr-1" /> Suositeltu
+                    <Award size={14} className="mr-1" /> Anbefalt
                   </Badge>
                 )}
                 {product.availableOnlyOnline && (
                   <Badge className="bg-purple-50 text-purple-700 border-purple-200 text-xs sm:text-sm">
-                    Vain verkossa
+                    Kun online
                   </Badge>
                 )}
               </div>
@@ -287,7 +287,7 @@ export default async function Page({ params }: PageProps) {
                     )}
                     {product.sortiment && <span className="mx-2">•</span>}
                     <span>
-                      Alko list nr:{" "}
+                      Vinmonopolet liste nr:{" "}
                       <span className="font-medium">{product.productCode}</span>
                     </span>
                   </span>
@@ -302,7 +302,7 @@ export default async function Page({ params }: PageProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Osta nyt
+                  Kjøp nå
                 </a>
               </Button>
             </div>
@@ -319,11 +319,11 @@ export default async function Page({ params }: PageProps) {
                   <div className="flex items-center text-gray-500 mb-1.5">
                     <Grape size={16} className="mr-1.5 flex-shrink-0" />
                     <span className="text-xs sm:text-sm font-medium">
-                      Tuottaja
+                      Produsent
                     </span>
                   </div>
                   <p className="text-sm sm:text-base text-[#e0944e] font-semibold break-words">
-                    {product.producerUrl.split("/").pop() || "Tuottaja"}
+                    {product.producerUrl.split("/").pop() || "Produsent"}
                   </p>
                 </div>
               )}
@@ -331,7 +331,7 @@ export default async function Page({ params }: PageProps) {
                 <div>
                   <div className="flex items-center text-gray-500 mb-1.5">
                     <MapPin size={16} className="mr-1.5 flex-shrink-0" />
-                    <span className="text-xs sm:text-sm font-medium">Alue</span>
+                    <span className="text-xs sm:text-sm font-medium">Region</span>
                   </div>
                   <p className="text-sm sm:text-base text-[#1D2939] font-semibold break-words">
                     {product.region}
@@ -343,7 +343,7 @@ export default async function Page({ params }: PageProps) {
                   <div className="flex items-center text-gray-500 mb-1.5">
                     <Wine size={16} className="mr-1.5 flex-shrink-0" />
                     <span className="text-xs sm:text-sm font-medium">
-                      Vuosikerta
+                      Årgang
                     </span>
                   </div>
                   <p className="text-sm sm:text-base text-[#1D2939] font-semibold">
@@ -356,7 +356,7 @@ export default async function Page({ params }: PageProps) {
                   <div className="flex items-center text-gray-500 mb-1.5">
                     <Percent size={16} className="mr-1.5 flex-shrink-0" />
                     <span className="text-xs sm:text-sm font-medium">
-                      Alkoholi
+                      Alkohol
                     </span>
                   </div>
                   <p className="text-sm sm:text-base text-[#1D2939] font-semibold">
@@ -376,7 +376,7 @@ export default async function Page({ params }: PageProps) {
                   className="mr-2 flex-shrink-0 text-[#e0944e]"
                 />
                 <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
-                  Makuprofiili
+                  Smaksprofil
                 </h3>
               </div>
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
@@ -391,14 +391,14 @@ export default async function Page({ params }: PageProps) {
               <div className="flex items-center mb-3">
                 <Wine size={18} className="mr-2 flex-shrink-0 text-[#e0944e]" />
                 <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
-                  Viinin tiedot
+                  Vindetaljer
                 </h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {product.bottleVolume && (
                   <div>
                     <p className="text-gray-500 text-xs sm:text-sm font-medium mb-1">
-                      Tilavuus
+                      Volum
                     </p>
                     <p className="text-sm sm:text-base text-[#1D2939] font-semibold">
                       {product.bottleVolume} ml
@@ -408,7 +408,7 @@ export default async function Page({ params }: PageProps) {
                 {product.composition && (
                   <div className="sm:col-span-2">
                     <p className="text-gray-500 text-xs sm:text-sm font-medium mb-1">
-                      Koostumus
+                      Sammensetning
                     </p>
                     <p className="text-sm sm:text-base text-[#1D2939] font-semibold break-words">
                       {product.composition}
@@ -418,7 +418,7 @@ export default async function Page({ params }: PageProps) {
                 {product.closure && (
                   <div>
                     <p className="text-gray-500 text-xs sm:text-sm font-medium mb-1">
-                      Suljentatyyppi
+                      Lukketype
                     </p>
                     <p className="text-sm sm:text-base text-[#1D2939] font-semibold">
                       {product.closure}
@@ -433,7 +433,7 @@ export default async function Page({ params }: PageProps) {
           {foodPairings.length > 0 && (
             <div className="mb-5 pb-5 border-b border-gray-200">
               <h3 className="text-base sm:text-lg font-semibold text-[#1D2939] mb-3">
-                Ruokayhdistelmät
+                Matkombinasjoner
               </h3>
               <div className="flex flex-wrap gap-2">
                 {foodPairings.map((pairing, index) => (
@@ -455,7 +455,7 @@ export default async function Page({ params }: PageProps) {
               <div className="flex items-center mb-3">
                 <Info size={18} className="mr-2 flex-shrink-0 text-[#e0944e]" />
                 <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
-                  Tietoa tuottajasta
+                  Om produsenten
                 </h3>
               </div>
               <div
@@ -473,7 +473,7 @@ export default async function Page({ params }: PageProps) {
               <div className="flex items-center mb-3">
                 <Info size={18} className="mr-2 flex-shrink-0 text-[#e0944e]" />
                 <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
-                  Lisätietoja
+                  Tilleggsinformasjon
                 </h3>
               </div>
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
@@ -491,7 +491,7 @@ export default async function Page({ params }: PageProps) {
                   className="mr-2 flex-shrink-0 text-[#e0944e]"
                 />
                 <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
-                  Palkinnot
+                  Priser
                 </h3>
               </div>
               <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
@@ -508,7 +508,7 @@ export default async function Page({ params }: PageProps) {
           {/* Last Updated */}
           <div className="flex items-center text-xs sm:text-sm text-gray-500">
             <Info size={16} className="mr-2 flex-shrink-0" />
-            Viimeksi päivitetty:{" "}
+            Sist oppdatert:{" "}
             {new Date(product.updatedAt).toLocaleDateString()}
           </div>
         </div>

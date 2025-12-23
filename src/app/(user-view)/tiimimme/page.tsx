@@ -33,7 +33,7 @@ const VartTeamPage = () => {
   // Generate breadcrumb schema
   const breadcrumbs = breadcrumbSchemaGenerator([
     {
-      name: "Tiimimme",
+      name: "Vårt team",
       url: `${process.env.NEXT_PUBLIC_BASE_URL}/tiimimme`,
     },
   ]);

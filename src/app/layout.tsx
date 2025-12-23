@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     default: "ConcealedWines",
     template: "%s | ConcealedWines",
   },
-  description: "Concealed Wines - Premium wine importer in Finland",
+  description: "Concealed Wines - Premium vinimportør i Norge",
   icons: {
     icon: "/favicon.ico",
   },

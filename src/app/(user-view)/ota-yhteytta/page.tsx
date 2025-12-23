@@ -17,7 +17,7 @@ export async function generateMetadata() {
 
   return {
     metadataBase: new URL(baseUrl),
-    title: data.seoTitle || "Ota yhteyttä - Concealed Wines Finland",
+    title: data.seoTitle || "Kontakt oss - Concealed Wines Norge",
     description:
       data.metaDesc || "Ta kontakt med Concealed Wines. Vi er her for å hjelpe!",
     robots: getRobotsString(),
@@ -35,7 +35,7 @@ const KontaktOssPage = () => {
   // Generate breadcrumb schema
   const breadcrumbs = breadcrumbSchemaGenerator([
     {
-      name: "Ota yhteyttä",
+      name: "Kontakt oss",
       url: `${baseUrl}/ota-yhteytta`,
     },
   ]);

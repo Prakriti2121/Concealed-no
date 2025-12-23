@@ -189,7 +189,7 @@ export default async function Page({ params }: PageProps) {
   const productJsonLd = productSchemaGenerator(productData);
 
   return (
-    <div className="container mx-auto px-4 py-4 lg:py-6">
+    <div className="container mx-auto px-4 py-4 sm:py-6 max-w-7xl">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: breadcrumbs }}
@@ -203,34 +203,45 @@ export default async function Page({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: productJsonLd }}
       />
 
-      <div className="flex items-center gap-2 mb-4">
+      <div className="mb-4">
         <BreadCrumb title1="Viineja-luettelo » Viinit" title2={product.title} />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-        <div className="md:col-span-1 lg:col-span-1">
-          <div className="lg:sticky lg:top-6">
-            <div className="w-full max-w-[280px] sm:max-w-[320px] md:max-w-full mx-auto md:mx-0">
-              <div className="lg:[&>*]:cursor-zoom-in [&>*]:cursor-default">
-                <ProductImageZoom
-                  src={product.largeImage || "/placeholder-wine.png"}
-                  alt={product.title}
-                />
-              </div>
-            </div>
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
+        {/* Image Section - Pure image, no containers */}
+        <div className="lg:col-span-2">
+          <div className="lg:sticky lg:top-4 h-[60vh] sm:h-[65vh] lg:h-[75vh]">
+            <ProductImageZoom
+              src={product.largeImage || "/placeholder-wine.png"}
+              alt={product.title}
+            />
           </div>
         </div>
 
-        <div className="md:col-span-1 lg:col-span-2 space-y-4">
-          <div className="pb-4 border-b border-gray-200">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 text-[#1D2939]">
-              {product.title}
-            </h1>
+        {/* Details Section */}
+        <div className="lg:col-span-3">
+          {/* Title Section with PDF Download */}
+          <div className="mb-5 pb-5 border-b border-gray-200">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#1D2939]">
+                  {product.title}
+                </h1>
+              </div>
+              <div className="sm:ml-4 flex-shrink-0 w-full sm:w-auto">
+                <PDFDownloadButton product={product} />
+              </div>
+            </div>
             {product.tagLine && (
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-2 flex items-center">
-                <Tag size={16} className="mr-1.5 flex-shrink-0" />
-                <span>{product.tagLine}</span>
-              </p>
+              <div className="flex items-start mb-3">
+                <Tag
+                  size={16}
+                  className="mr-2 mt-1 flex-shrink-0 text-gray-400"
+                />
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
+                  {product.tagLine}
+                </p>
+              </div>
             )}
             {(product.isNew ||
               product.organic ||
@@ -238,34 +249,22 @@ export default async function Page({ params }: PageProps) {
               product.availableOnlyOnline) && (
               <div className="flex flex-wrap gap-2">
                 {product.isNew && (
-                  <Badge
-                    variant="outline"
-                    className="bg-[#e0944e]/10 text-[#e0944e] border-[#e0944e]/30 text-xs sm:text-sm"
-                  >
+                  <Badge className="bg-[#e0944e]/10 text-[#e0944e] border-[#e0944e]/30 text-xs sm:text-sm">
                     Uusi
                   </Badge>
                 )}
                 {product.organic && (
-                  <Badge
-                    variant="outline"
-                    className="bg-green-50 text-green-700 border-green-200 text-xs sm:text-sm"
-                  >
+                  <Badge className="bg-green-50 text-green-700 border-green-200 text-xs sm:text-sm">
                     <Leaf size={14} className="mr-1" /> Luomu
                   </Badge>
                 )}
                 {product.featured && (
-                  <Badge
-                    variant="outline"
-                    className="bg-amber-50 text-amber-700 border-amber-200 text-xs sm:text-sm"
-                  >
+                  <Badge className="bg-amber-50 text-amber-700 border-amber-200 text-xs sm:text-sm">
                     <Award size={14} className="mr-1" /> Suositeltu
                   </Badge>
                 )}
                 {product.availableOnlyOnline && (
-                  <Badge
-                    variant="outline"
-                    className="bg-purple-50 text-purple-700 border-purple-200 text-xs sm:text-sm"
-                  >
+                  <Badge className="bg-purple-50 text-purple-700 border-purple-200 text-xs sm:text-sm">
                     Vain verkossa
                   </Badge>
                 )}
@@ -273,125 +272,167 @@ export default async function Page({ params }: PageProps) {
             )}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 py-4 border-b border-gray-200">
-            <div>
-              <p className="text-2xl sm:text-3xl font-bold text-[#1D2939]">
-                {product.price.toFixed(2)} €
-              </p>
-              <p className="text-xs sm:text-sm text-gray-500 flex items-center mt-1">
-                <Package size={14} className="mr-1 flex-shrink-0" />
-                <span className="truncate">
-                  {product.sortiment && <>{product.sortiment} • </>}
-                  Koodi: {product.productCode}
-                </span>
-              </p>
-            </div>
-            <Button
-              asChild
-              className="bg-[#e0944e] hover:bg-[#d08843] px-6 w-full sm:w-auto"
-            >
-              <a
-                href={product.buyLink}
-                target="_blank"
-                rel="noopener noreferrer"
+          {/* Price and Buy Section */}
+          <div className="mb-5 pb-5 border-b border-gray-200">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <div className="flex-1">
+                <p className="text-3xl sm:text-4xl font-bold text-[#1D2939] mb-2">
+                  {product.price.toFixed(2)} €
+                </p>
+                <div className="flex items-center text-gray-600 text-sm">
+                  <Package size={16} className="mr-2 flex-shrink-0" />
+                  <span>
+                    {product.sortiment && (
+                      <span className="font-medium">{product.sortiment}</span>
+                    )}
+                    {product.sortiment && <span className="mx-2">•</span>}
+                    <span>
+                      Alko list nr:{" "}
+                      <span className="font-medium">{product.productCode}</span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <Button
+                asChild
+                className="bg-[#e0944e] hover:bg-[#d08843] text-white px-6 py-2.5 sm:px-8 sm:py-3 text-sm sm:text-base font-medium transition-all w-full sm:w-auto"
               >
-                Osta nyt
-              </a>
-            </Button>
+                <a
+                  href={product.buyLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Osta nyt
+                </a>
+              </Button>
+            </div>
           </div>
 
+          {/* Quick Info Grid - No truncate */}
           {(product.producerUrl ||
             product.region ||
             product.vintage ||
             product.alcohol) && (
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 py-4 border-b border-gray-200">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-5 pb-5 border-b border-gray-200">
               {product.producerUrl && (
                 <div>
-                  <p className="text-gray-500 text-sm mb-1 flex items-center">
-                    <Grape size={14} className="mr-1 flex-shrink-0" /> Tuottaja
-                  </p>
-                  <div className="text-[#e0944e] text-base font-medium truncate block">
-                    {product.producerUrl.split("/").pop() || "Tuottaja"}
+                  <div className="flex items-center text-gray-500 mb-1.5">
+                    <Grape size={16} className="mr-1.5 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium">
+                      Tuottaja
+                    </span>
                   </div>
+                  <p className="text-sm sm:text-base text-[#e0944e] font-semibold break-words">
+                    {product.producerUrl.split("/").pop() || "Tuottaja"}
+                  </p>
                 </div>
               )}
               {product.region && (
                 <div>
-                  <p className="text-gray-500 text-sm mb-1 flex items-center">
-                    <MapPin size={14} className="mr-1 flex-shrink-0" /> Alue
-                  </p>
-                  <p className="text-base font-medium truncate">
+                  <div className="flex items-center text-gray-500 mb-1.5">
+                    <MapPin size={16} className="mr-1.5 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium">Alue</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-[#1D2939] font-semibold break-words">
                     {product.region}
                   </p>
                 </div>
               )}
               {product.vintage && (
                 <div>
-                  <p className="text-gray-500 text-sm mb-1 flex items-center">
-                    <Wine size={14} className="mr-1 flex-shrink-0" /> Vuosikerta
+                  <div className="flex items-center text-gray-500 mb-1.5">
+                    <Wine size={16} className="mr-1.5 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium">
+                      Vuosikerta
+                    </span>
+                  </div>
+                  <p className="text-sm sm:text-base text-[#1D2939] font-semibold">
+                    {product.vintage}
                   </p>
-                  <p className="text-base font-medium">{product.vintage}</p>
                 </div>
               )}
               {product.alcohol && (
                 <div>
-                  <p className="text-gray-500 text-sm mb-1 flex items-center">
-                    <Percent size={14} className="mr-1 flex-shrink-0" />{" "}
-                    Alkoholi
+                  <div className="flex items-center text-gray-500 mb-1.5">
+                    <Percent size={16} className="mr-1.5 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm font-medium">
+                      Alkoholi
+                    </span>
+                  </div>
+                  <p className="text-sm sm:text-base text-[#1D2939] font-semibold">
+                    {product.alcohol}%
                   </p>
-                  <p className="text-base font-medium">{product.alcohol}%</p>
                 </div>
               )}
             </div>
           )}
 
+          {/* Taste Profile */}
           {tasteArray.length > 0 && (
-            <div className="py-4 border-b border-gray-200">
-              <h3 className="text-base font-semibold mb-2 flex items-center text-[#1D2939]">
-                <GlassWater size={16} className="mr-2 flex-shrink-0" />{" "}
-                Makuprofiili
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            <div className="mb-5 pb-5 border-b border-gray-200">
+              <div className="flex items-center mb-3">
+                <GlassWater
+                  size={18}
+                  className="mr-2 flex-shrink-0 text-[#e0944e]"
+                />
+                <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
+                  Makuprofiili
+                </h3>
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                 {tasteArray.join(", ")}.
               </p>
             </div>
           )}
 
+          {/* Wine Details */}
           {(product.bottleVolume || product.composition || product.closure) && (
-            <div className="py-4 border-b border-gray-200">
-              <h3 className="text-base font-semibold mb-3 flex items-center text-[#1D2939]">
-                <Wine size={16} className="mr-2 flex-shrink-0" /> Viinin tiedot
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            <div className="mb-5 pb-5 border-b border-gray-200">
+              <div className="flex items-center mb-3">
+                <Wine size={18} className="mr-2 flex-shrink-0 text-[#e0944e]" />
+                <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
+                  Viinin tiedot
+                </h3>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {product.bottleVolume && (
                   <div>
-                    <p className="text-gray-500 text-sm mb-1">Tilavuus</p>
-                    <p className="text-base font-medium">
+                    <p className="text-gray-500 text-xs sm:text-sm font-medium mb-1">
+                      Tilavuus
+                    </p>
+                    <p className="text-sm sm:text-base text-[#1D2939] font-semibold">
                       {product.bottleVolume} ml
                     </p>
                   </div>
                 )}
                 {product.composition && (
                   <div className="sm:col-span-2">
-                    <p className="text-gray-500 text-sm mb-1">Koostumus</p>
-                    <p className="text-base font-medium">
+                    <p className="text-gray-500 text-xs sm:text-sm font-medium mb-1">
+                      Koostumus
+                    </p>
+                    <p className="text-sm sm:text-base text-[#1D2939] font-semibold break-words">
                       {product.composition}
                     </p>
                   </div>
                 )}
                 {product.closure && (
                   <div>
-                    <p className="text-gray-500 text-sm mb-1">Sulkija</p>
-                    <p className="text-base font-medium">{product.closure}</p>
+                    <p className="text-gray-500 text-xs sm:text-sm font-medium mb-1">
+                      Suljentatyyppi
+                    </p>
+                    <p className="text-sm sm:text-base text-[#1D2939] font-semibold">
+                      {product.closure}
+                    </p>
                   </div>
                 )}
               </div>
             </div>
           )}
 
+          {/* Food Pairings */}
           {foodPairings.length > 0 && (
-            <div className="py-4 border-b border-gray-200">
-              <h3 className="text-base font-semibold mb-2 text-[#1D2939]">
+            <div className="mb-5 pb-5 border-b border-gray-200">
+              <h3 className="text-base sm:text-lg font-semibold text-[#1D2939] mb-3">
                 Ruokayhdistelmät
               </h3>
               <div className="flex flex-wrap gap-2">
@@ -399,7 +440,7 @@ export default async function Page({ params }: PageProps) {
                   <Badge
                     key={index}
                     variant="outline"
-                    className="bg-gray-50 text-xs sm:text-sm"
+                    className="bg-gray-50 border-gray-300 text-gray-700 text-xs sm:text-sm"
                   >
                     {pairing}
                   </Badge>
@@ -408,14 +449,17 @@ export default async function Page({ params }: PageProps) {
             </div>
           )}
 
+          {/* Producer Description */}
           {product.producerDescription && (
-            <div className="py-4 border-b border-gray-200">
-              <h3 className="text-base font-semibold mb-3 flex items-center text-[#1D2939]">
-                <Info size={16} className="mr-2 flex-shrink-0" /> Tietoa
-                tuottajasta
-              </h3>
+            <div className="mb-5 pb-5 border-b border-gray-200">
+              <div className="flex items-center mb-3">
+                <Info size={18} className="mr-2 flex-shrink-0 text-[#e0944e]" />
+                <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
+                  Tietoa tuottajasta
+                </h3>
+              </div>
               <div
-                className="prose prose-sm max-w-none text-sm text-gray-600 dark:text-gray-300 leading-relaxed"
+                className="prose prose-sm max-w-none text-sm sm:text-base text-gray-700 leading-relaxed"
                 dangerouslySetInnerHTML={{
                   __html: product.producerDescription,
                 }}
@@ -423,35 +467,47 @@ export default async function Page({ params }: PageProps) {
             </div>
           )}
 
+          {/* Additional Info */}
           {product.additionalInfo && (
-            <div className="py-4 border-b border-gray-200">
-              <h3 className="text-base font-semibold mb-3 flex items-center text-[#1D2939]">
-                <Info size={16} className="mr-2 flex-shrink-0" /> Lisätietoja
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            <div className="mb-5 pb-5 border-b border-gray-200">
+              <div className="flex items-center mb-3">
+                <Info size={18} className="mr-2 flex-shrink-0 text-[#e0944e]" />
+                <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
+                  Lisätietoja
+                </h3>
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                 {product.additionalInfo}
               </p>
             </div>
           )}
 
+          {/* Awards */}
           {product.awards && (
-            <div className="py-4 border-b border-gray-200">
-              <h3 className="text-base font-semibold mb-3 flex items-center text-[#1D2939]">
-                <Award size={16} className="mr-2 flex-shrink-0" /> Palkinnot
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+            <div className="mb-5 pb-5 border-b border-gray-200">
+              <div className="flex items-center mb-3">
+                <Award
+                  size={18}
+                  className="mr-2 flex-shrink-0 text-[#e0944e]"
+                />
+                <h3 className="text-base sm:text-lg font-semibold text-[#1D2939]">
+                  Palkinnot
+                </h3>
+              </div>
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                 {product.awards}
               </p>
             </div>
           )}
 
-          <div className="py-4 flex flex-wrap items-center gap-3">
+          {/* Share Button */}
+          <div className="mb-5 pb-5 border-b border-gray-200">
             <SharePopover title={product.title} />
-            <PDFDownloadButton product={product} />
           </div>
 
-          <div className="text-xs sm:text-sm text-gray-500 flex items-center pt-2">
-            <Info size={14} className="mr-1 flex-shrink-0" />
+          {/* Last Updated */}
+          <div className="flex items-center text-xs sm:text-sm text-gray-500">
+            <Info size={16} className="mr-2 flex-shrink-0" />
             Viimeksi päivitetty:{" "}
             {new Date(product.updatedAt).toLocaleDateString()}
           </div>

@@ -1,4 +1,4 @@
-import { getWineBySlug } from "@/lib/actions/product.actions";
+import { getWineBySlug, getAllProducts } from "@/lib/actions/product.actions";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -23,6 +23,8 @@ import {
   breadcrumbSchemaGenerator,
   organizationSchema,
 } from "@/app/utils/schemaUtils";
+import Image from "next/image";
+import Link from "next/link";
 
 export const revalidate = 0;
 
@@ -121,6 +123,12 @@ export default async function Page({ params }: PageProps) {
   if (!product) {
     return <div>Produkt ikke funnet!</div>;
   }
+
+  // Fetch all products and filter out the current one
+  const allProducts = await getAllProducts();
+  const otherProducts = allProducts
+    .filter((p) => p.id !== product.id)
+    .slice(0, 4);
 
   const tasteArray = Array.isArray(product.taste)
     ? product.taste
@@ -331,7 +339,9 @@ export default async function Page({ params }: PageProps) {
                 <div>
                   <div className="flex items-center text-gray-500 mb-1.5">
                     <MapPin size={16} className="mr-1.5 flex-shrink-0" />
-                    <span className="text-xs sm:text-sm font-medium">Region</span>
+                    <span className="text-xs sm:text-sm font-medium">
+                      Region
+                    </span>
                   </div>
                   <p className="text-sm sm:text-base text-[#1D2939] font-semibold break-words">
                     {product.region}
@@ -508,11 +518,86 @@ export default async function Page({ params }: PageProps) {
           {/* Last Updated */}
           <div className="flex items-center text-xs sm:text-sm text-gray-500">
             <Info size={16} className="mr-2 flex-shrink-0" />
-            Sist oppdatert:{" "}
-            {new Date(product.updatedAt).toLocaleDateString()}
+            Sist oppdatert: {new Date(product.updatedAt).toLocaleDateString()}
           </div>
         </div>
       </div>
+
+      {/* Other Products Section */}
+      {otherProducts.length > 0 && (
+        <div className="mt-16 sm:mt-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 sm:mb-12 text-center text-[#1D2939]">
+            Andre produkter
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {otherProducts.map((wine) => (
+              <div
+                key={wine.id}
+                className="group bg-white border border-gray-200 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="flex flex-col sm:flex-row h-full">
+                  {/* Image Section */}
+                  <div className="w-full sm:w-2/5 flex justify-center items-center p-8 bg-gradient-to-br from-gray-50 to-white relative">
+                    <Link href={`/viineja-luettelo/viinit/${wine.slug}`}>
+                      <div className="relative h-64 w-40 cursor-pointer transform transition-transform duration-300 group-hover:scale-105">
+                        <Image
+                          src={wine.largeImage}
+                          alt={wine.title || "Wine"}
+                          fill
+                          sizes="(max-width: 640px) 100vw, 40vw"
+                          className="object-contain drop-shadow-lg"
+                        />
+                      </div>
+                    </Link>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="w-full sm:w-3/5 p-6 flex flex-col justify-between">
+                    <div className="flex-grow">
+                      <Link
+                        href={`/viineja-luettelo/viinit/${wine.slug}`}
+                        className="block group-hover:text-gray-700 transition-colors"
+                      >
+                        <h2 className="text-xl md:text-2xl font-bold leading-tight mb-3 line-clamp-2 text-[#1D2939]">
+                          {wine.title}
+                        </h2>
+                      </Link>
+                      <p className="text-sm mb-4 text-[#282828]">
+                        Kode: {wine.productCode}
+                      </p>
+                    </div>
+
+                    <div className="space-y-4 mt-4">
+                      <div className="text-3xl font-black text-[#1D2939]">
+                        {wine.price} €
+                      </div>
+
+                      <Link
+                        href={`/viineja-luettelo/viinit/${wine.slug}`}
+                        className="block"
+                      >
+                        <button className="w-full bg-[#333333] text-white py-3 px-6 rounded-lg font-semibold hover:bg-black transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]">
+                          Les mer
+                        </button>
+                      </Link>
+
+                      <div className="text-sm leading-relaxed pt-2 border-t border-gray-100 text-[#282828]">
+                        Tilgjengelig i Vinmonopolet •{" "}
+                        <Link
+                          href={wine.buyLink}
+                          className="hover:text-black hover:underline transition-colors text-[#282828]"
+                        >
+                          Finn nærmeste butikk
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

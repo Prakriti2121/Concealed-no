@@ -57,14 +57,13 @@ export default function Navbar() {
       <Link href="/" className="flex items-center shrink-0" prefetch={false}>
         <Image
           src="/images/cw-black.svg"
-          width={100}
-          height={100}
+          width={150}
+          height={150}
           alt="Logo"
-          className="w-20 h-auto sm:w-28 md:w-32 lg:w-36 object-contain"
+          className="w-24 h-auto sm:w-30 md:w-36 lg:w-40 object-contain"
           priority
         />
       </Link>
-
       {/* Mobile Menu */}
       <div className="ml-auto lg:hidden">
         <Sheet>

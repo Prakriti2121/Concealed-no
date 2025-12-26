@@ -50,6 +50,54 @@ export const generateProductPDF = async (product: Product) => {
     const contentWidth = pageWidth - margin * 2;
     let yPosition = margin;
 
+     // Add Logo at the top with background styling
+    try {
+      const logoImg = await loadImage("/images/cw-black.svg");
+      const logoWidth = 50; // Increased from 40
+      const logoHeight = (logoImg.height / logoImg.width) * logoWidth;
+      const logoX = pageWidth / 2 - logoWidth / 2;
+
+      // Add subtle background rectangle for logo
+      const bgPadding = 8;
+      pdf.setFillColor(252, 252, 252);
+      pdf.roundedRect(
+        logoX - bgPadding,
+        yPosition - bgPadding / 2,
+        logoWidth + bgPadding * 2,
+        logoHeight + bgPadding,
+        2,
+        2,
+        "F"
+      );
+
+      // Add subtle border
+      pdf.setDrawColor(240, 240, 240);
+      pdf.setLineWidth(0.3);
+      pdf.roundedRect(
+        logoX - bgPadding,
+        yPosition - bgPadding / 2,
+        logoWidth + bgPadding * 2,
+        logoHeight + bgPadding,
+        2,
+        2,
+        "S"
+      );
+
+      const canvas = document.createElement("canvas");
+      canvas.width = logoImg.width;
+      canvas.height = logoImg.height;
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.drawImage(logoImg, 0, 0);
+        const logoData = canvas.toDataURL("image/png", 1.0);
+        pdf.addImage(logoData, "PNG", logoX, yPosition, logoWidth, logoHeight);
+        yPosition += logoHeight + 12; // Increased spacing
+      }
+    } catch (error) {
+      console.error("Error loading logo:", error);
+      yPosition += 10; // Add spacing even if logo fails
+    }
+    
     // Title Section
     pdf.setFontSize(20);
     pdf.setFont("helvetica", "bold");
